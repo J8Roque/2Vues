@@ -1,0 +1,77 @@
+[
+  {
+    "id": "lagoon-daybreak",
+    "title": "Lagoon Daybreak: A Boat Ride That Reset My Brain",
+    "category": "Travel",
+    "date": "2026-01-08",
+    "readTime": "4 min",
+    "thumb": "./assets/thumbs/lagoon.jpg",
+    "video": {
+      "type": "youtube",
+      "id": "dQw4w9WgXcQ"
+    },
+    "excerpt": "Blue water, quiet paddles, and one unexpected conversation that changed the whole day.",
+    "content": [
+      "I’ve learned that the best travel moments are the ones you don’t schedule.",
+      "This morning started with a simple plan: get on the water early, before the wind wakes up.",
+      "By the end of the ride, the lagoon felt like a moving meditation."
+    ],
+    "sections": [
+      {
+        "heading": "What I’d do differently next time",
+        "bullets": ["Bring reef-safe sunscreen", "Pack a dry bag", "Leave 30% of the day unplanned"]
+      }
+    ],
+    "tags": ["coast", "boats", "slow travel"]
+  },
+  {
+    "id": "street-bites-guide",
+    "title": "Street Bites: How I Choose What to Eat (Without Regret)",
+    "category": "Food",
+    "date": "2026-01-18",
+    "readTime": "5 min",
+    "thumb": "./assets/thumbs/streetfood.jpg",
+    "video": {
+      "type": "youtube",
+      "id": "M7lc1UVf-VE"
+    },
+    "excerpt": "My simple decision system for street food: follow the smoke, follow the locals, follow the queue.",
+    "content": [
+      "Street food is the fastest way to understand a city.",
+      "My rule: pick stalls with heat, speed, and repeat customers.",
+      "If you see a vendor serving the same dish all day, that’s usually a good sign."
+    ],
+    "sections": [
+      {
+        "heading": "My 3-rule checklist",
+        "bullets": ["High turnover", "One specialty", "Locals in line"]
+      }
+    ],
+    "tags": ["street food", "guide", "travel eats"]
+  },
+  {
+    "id": "travel-tech-pack",
+    "title": "My Travel Tech Pack: The 7 Things I Actually Use",
+    "category": "Technology",
+    "date": "2026-02-02",
+    "readTime": "6 min",
+    "thumb": "./assets/thumbs/techpack.jpg",
+    "video": {
+      "type": "youtube",
+      "id": "ysz5S6PUM-U"
+    },
+    "excerpt": "Minimal gear, maximum output: what stays in my bag for filming, editing, and backup.",
+    "content": [
+      "I used to overpack tech. Now I run a small, reliable kit that never slows me down.",
+      "The goal is simple: record clean audio, keep footage safe, and edit anywhere.",
+      "If it doesn’t reduce friction, it doesn’t come with me."
+    ],
+    "sections": [
+      {
+        "heading": "Non-negotiables",
+        "bullets": ["SSD backup", "small tripod", "good mic", "one charger to rule them all"]
+      }
+    ],
+    "tags": ["gear", "workflow", "creator"]
+  }
+]
