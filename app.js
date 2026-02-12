@@ -235,4 +235,228 @@
             </p>
             <h3>What you’ll find here</h3>
             <ul>
-              <li>Short cine
+              <li>Short cinematic vlogs + practical guides</li>
+              <li>Street food and restaurant highlights</li>
+              <li>Creator gear, apps, and behind-the-scenes workflow</li>
+            </ul>
+            <p>
+              Want this site to match your exact style? Tell me your favorite colors + your logo and I’ll theme it.
+            </p>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function contactView() {
+    return `
+      <section class="wrap">
+        <div class="sectionTitle">
+          <h2>Contact</h2>
+          <p class="hint">Collabs, features, and brand work.</p>
+        </div>
+
+        <div class="post">
+          <div class="post__header">
+            <h1 class="post__title">Let’s build something.</h1>
+            <div class="post__meta">
+              <span>📩 hello@2vues.com</span>
+              <span>🤝 partnerships & collaborations</span>
+            </div>
+          </div>
+          <div class="post__content">
+            <p>
+              Email: <a href="mailto:hello@2vues.com">hello@2vues.com</a>
+            </p>
+            <p>
+              Or DM via your social links in the footer. Add a real form later if you want (I can wire it to Formspree or Netlify Forms).
+            </p>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function youtubeEmbed(videoId) {
+    const safeId = encodeURIComponent(videoId || "");
+    // modestbranding + rel=0 for cleaner playback; still YouTube controlled
+    return `
+      <iframe
+        src="https://www.youtube.com/embed/${safeId}?rel=0&modestbranding=1"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    `;
+  }
+
+  function postView(id) {
+    const post = state.posts.find(p => p.id === id);
+    if (!post) {
+      return `
+        <section class="wrap">
+          <div class="notice">❗ Post not found. Go back to <a href="#/">Home</a>.</div>
+        </section>
+      `;
+    }
+
+    const videoBlock =
+      post.video?.type === "youtube" && post.video?.id
+        ? youtubeEmbed(post.video.id)
+        : `<div style="padding:24px;color:rgba(255,255,255,.75)">No video set for this post.</div>`;
+
+    const paragraphs = post.content.map(t => `<p>${escapeHtml(t)}</p>`).join("");
+
+    const extraSections = post.sections.map(s => `
+      <h3>${escapeHtml(s.heading || "")}</h3>
+      ${Array.isArray(s.bullets) && s.bullets.length
+        ? `<ul>${s.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`
+        : ""
+      }
+    `).join("");
+
+    const tags = (post.tags || []).map(t => `<span class="pill">${escapeHtml(t)}</span>`).join("");
+
+    return `
+      <section class="wrap">
+        <div style="margin-bottom:12px;">
+          <a class="btn btn--ghost" href="#/explore">← Back to Explore</a>
+        </div>
+
+        <article class="post">
+          <div class="post__header">
+            <div class="pillRow">
+              <span class="pill">${escapeHtml(post.category)}</span>
+              <span class="pill">${escapeHtml(formatDate(post.date))}</span>
+              <span class="pill">${escapeHtml(post.readTime || "")}</span>
+              ${tags}
+            </div>
+            <h1 class="post__title">${escapeHtml(post.title)}</h1>
+            <div class="post__meta">
+              <span>🎬 Vlog Episode</span>
+              <span>🧭 2VUES</span>
+            </div>
+          </div>
+
+          <div class="post__video">
+            ${videoBlock}
+          </div>
+
+          <div class="post__content">
+            <p style="color:rgba(255,255,255,.75)"><i>${escapeHtml(post.excerpt || "")}</i></p>
+            ${paragraphs}
+            ${extraSections}
+          </div>
+        </article>
+      </section>
+    `;
+  }
+
+  // ---------- Explore wiring ----------
+  function wireExplore() {
+    const q = document.getElementById("q");
+    const cat = document.getElementById("cat");
+    const clear = document.getElementById("clear");
+    const results = document.getElementById("results");
+    if (!q || !cat || !clear || !results) return;
+
+    function renderResults() {
+      const query = q.value.trim().toLowerCase();
+      const chosen = cat.value;
+
+      let filtered = sortByNewest(state.posts);
+
+      if (chosen !== "all") {
+        filtered = filtered.filter(p => p.category === chosen);
+      }
+      if (query) {
+        filtered = filtered.filter(p =>
+          (p.title || "").toLowerCase().includes(query) ||
+          (p.excerpt || "").toLowerCase().includes(query) ||
+          (p.tags || []).some(t => String(t).toLowerCase().includes(query))
+        );
+      }
+
+      results.innerHTML = filtered.length
+        ? filtered.map(postCard).join("")
+        : `<div class="notice" style="grid-column:1/-1;">No matches. Try another search.</div>`;
+    }
+
+    q.addEventListener("input", renderResults);
+    cat.addEventListener("change", renderResults);
+    clear.addEventListener("click", () => {
+      q.value = "";
+      cat.value = "all";
+      renderResults();
+      q.focus();
+    });
+
+    renderResults();
+  }
+
+  // ---------- Router ----------
+  async function render() {
+    await loadPosts();
+
+    const route = getRoute();
+    const [first, second] = route;
+
+    let html = "";
+    if (!first) html = homeView();
+    else if (first === "explore") html = exploreView();
+    else if (first === "post") html = postView(decodeURIComponent(second || ""));
+    else if (first === "about") html = aboutView();
+    else if (first === "contact") html = contactView();
+    else html = homeView();
+
+    app.innerHTML = html;
+    setActiveNav();
+
+    if (first === "explore") wireExplore();
+
+    // Close menu on navigation
+    closeMenu();
+
+    // Optional: scroll to top on route change
+    if (!prefersReducedMotion) window.scrollTo({ top: 0, behavior: "smooth" });
+    else window.scrollTo(0, 0);
+  }
+
+  // ---------- Nav toggle ----------
+  if (navToggle && navLinks) {
+    navToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", String(open));
+      navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+      if (!navLinks.contains(t) && !navToggle.contains(t)) closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
+  // Render on load + hash changes
+  window.addEventListener("hashchange", render);
+  window.addEventListener("DOMContentLoaded", async () => {
+    try {
+      await render();
+    } catch (err) {
+      app.innerHTML = `
+        <section class="wrap">
+          <div class="notice">
+            ❗ Could not load the site data. If you opened this file directly, your browser might block fetch().
+            <br><br>
+            Fix: run a local server (VS Code Live Server, or: <code>python -m http.server</code>) and reload.
+            <br><br>
+            Error: ${escapeHtml(err.message)}
+          </div>
+        </section>
+      `;
+    }
+  });
+})();
