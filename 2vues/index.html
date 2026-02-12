@@ -1,1 +1,182 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b2b2d" />
+
+  <title>2VUES | Travel • Food • Technology</title>
+  <meta name="description" content="2VUES — Travel, Food, and Technology. Stories, guides, and ideas from around the world." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <header class="site-header" role="banner">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="2VUES Home">
+        <span class="brand__name">2VUES</span>
+        <span class="brand__tag">Travel • Food • Tech</span>
+      </a>
+
+      <nav class="site-nav" role="navigation" aria-label="Primary">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul id="navLinks" class="nav-links">
+          <li><a href="#about">about</a></li>
+          <li><a href="#press">press</a></li>
+          <li><a href="#blog">blog</a></li>
+          <li><a href="#destinations">destinations</a></li>
+          <li class="logo-slot">
+            <a class="nav-logo" href="#top" aria-label="2VUES">
+              <span class="nav-logo__line1">2VUES</span>
+              <span class="nav-logo__line2">travel • food • tech</span>
+            </a>
+          </li>
+          <li><a href="#book">book</a></li>
+          <li><a href="#stories">the stories</a></li>
+          <li><a href="#list">the list</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="hero" role="main">
+    <!-- Background image + overlays -->
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <section class="hero__content" aria-label="Hero content">
+      <h1 class="hero__title">
+        <span class="hero__titleTop">2VUES</span>
+        <span class="hero__titleBottom">travel • food • technology</span>
+      </h1>
+
+      <div class="hero__cta">
+        <a class="btn-outline" href="#enter" data-enter>
+          <span>ENTER</span>
+        </a>
+        <p class="hero__subtitle">World Explorer &nbsp;|&nbsp; Taster &nbsp;|&nbsp; Builder</p>
+      </div>
+    </section>
+
+    <!-- Social icons -->
+    <footer class="hero__footer" aria-label="Social links">
+      <a class="social" href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+        <!-- Instagram icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2zM17.6 6.6a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/>
+        </svg>
+      </a>
+
+      <a class="social" href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+        <!-- Facebook icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M13.5 22v-8h2.7l.4-3H13.5V9.2c0-.9.3-1.6 1.7-1.6h1.5V5c-.7-.1-1.6-.2-2.6-.2-2.6 0-4.3 1.6-4.3 4.6V11H7.4v3h2.4v8h3.7z"/>
+        </svg>
+      </a>
+
+      <a class="social" href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
+        <!-- YouTube icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.6 31.6 0 0 0 2 12a31.6 31.6 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 22 12a31.6 31.6 0 0 0-.4-4.8zM10.2 15.2V8.8L15.8 12l-5.6 3.2z"/>
+        </svg>
+      </a>
+    </footer>
+  </main>
+
+  <!-- Simple sections so nav links land somewhere -->
+  <section id="enter" class="section section--light">
+    <div class="container">
+      <h2>Welcome to 2VUES</h2>
+      <p>
+        This is your landing section after “ENTER”. Replace this with your featured posts,
+        destination grid, email signup, or a “Start here” guide.
+      </p>
+      <div class="cards">
+        <article class="card">
+          <h3>Travel</h3>
+          <p>Destination notes, itineraries, and cultural gems.</p>
+        </article>
+        <article class="card">
+          <h3>Food</h3>
+          <p>Street food, recipes, restaurants, and tastings.</p>
+        </article>
+        <article class="card">
+          <h3>Technology</h3>
+          <p>Tools, workflows, reviews, and build logs.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About</h2>
+      <p>Add your story here—who you are, what you cover, and why 2VUES exists.</p>
+    </div>
+  </section>
+
+  <section id="press" class="section section--light">
+    <div class="container">
+      <h2>Press</h2>
+      <p>Logos, features, mentions, media kit download.</p>
+    </div>
+  </section>
+
+  <section id="blog" class="section">
+    <div class="container">
+      <h2>Blog</h2>
+      <p>Latest articles and categories.</p>
+    </div>
+  </section>
+
+  <section id="destinations" class="section section--light">
+    <div class="container">
+      <h2>Destinations</h2>
+      <p>Country/city guides and travel collections.</p>
+    </div>
+  </section>
+
+  <section id="book" class="section">
+    <div class="container">
+      <h2>Book</h2>
+      <p>Consulting, itinerary planning, collaborations, speaking.</p>
+    </div>
+  </section>
+
+  <section id="stories" class="section section--light">
+    <div class="container">
+      <h2>The Stories</h2>
+      <p>Featured long-form travel, food journeys, and tech builds.</p>
+    </div>
+  </section>
+
+  <section id="list" class="section">
+    <div class="container">
+      <h2>The List</h2>
+      <p>Curated picks: best eats, best stays, best gear.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section section--light">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:hello@2vues.com">hello@2vues.com</a></p>
+    </div>
+  </section>
+
+  <script src="./app.js"></script>
+</body>
+</html>
